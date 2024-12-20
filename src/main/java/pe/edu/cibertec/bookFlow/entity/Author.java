@@ -20,7 +20,7 @@ public class Author {
     private String name;
     private String nationality;
 
-    @OneToMany(mappedBy = "book",cascade = {CascadeType.PERSIST,CascadeType.REMOVE},orphanRemoval = true)
+    @OneToMany(mappedBy = "author",cascade = {CascadeType.PERSIST,CascadeType.REMOVE},orphanRemoval = true)
     @ToString.Exclude
     public List<Book> books ;
 }

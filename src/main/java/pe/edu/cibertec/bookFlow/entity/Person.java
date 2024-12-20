@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -26,12 +27,22 @@ public class Person {
     private Date birthDate;
     private String email;
 
-    @OneToOne(mappedBy = "type_document",cascade = {CascadeType.PERSIST,CascadeType.REMOVE},orphanRemoval = true)
+    @ManyToOne
+    @JoinColumn(name = "type_document_id")
     @ToString.Exclude
     private TypeDocument typeDocument;
 
-    @OneToOne(mappedBy = "book",cascade = {CascadeType.PERSIST,CascadeType.REMOVE},orphanRemoval = true)
+    @ManyToOne
+    @JoinColumn(name = "person_genre_id")
+    @ToString.Exclude
+    private PersonGenre personGenre;
+
+    @OneToOne(mappedBy = "person",cascade = {CascadeType.PERSIST,CascadeType.REMOVE},orphanRemoval = true)
     @ToString.Exclude
     private User user;
+
+    @OneToMany(mappedBy = "person",cascade = {CascadeType.PERSIST,CascadeType.REMOVE},orphanRemoval = true)
+    @ToString.Exclude
+    private List<Loan> loans;
 
 }

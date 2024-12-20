@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.List;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -17,7 +19,7 @@ public class TypeDocument {
     private Integer typeDocumentId;
     private String name;
 
-    @OneToOne(mappedBy = "type_document",cascade = {CascadeType.PERSIST,CascadeType.REMOVE},orphanRemoval = true)
+    @OneToMany(mappedBy = "typeDocument")
     @ToString.Exclude
-    private Person person;
+    private List<Person> persons;
 }
