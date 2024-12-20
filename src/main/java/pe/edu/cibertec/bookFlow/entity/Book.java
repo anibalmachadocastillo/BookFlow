@@ -14,7 +14,7 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private Integer bookId_;
+    private Integer bookId;
     private String title;
     private String publisheYear;
     private String  genre;
@@ -24,4 +24,12 @@ public class Book {
     @ManyToOne
     @ToString.Exclude
     private Author author;
+
+    @ManyToOne
+    @ToString.Exclude
+    private Editorial editorial;
+
+    @ManyToOne
+    @ToString.Exclude
+    private TypeBookGenre typeBookGenre;
 }
