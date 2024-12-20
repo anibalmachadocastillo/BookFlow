@@ -1,8 +1,7 @@
 package pe.edu.cibertec.bookFlow.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,10 +14,18 @@ import java.util.Date;
 @NoArgsConstructor
 public class Loan {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer loanId;
-    private Integer bookId;
-    private Integer personId;
     private Date loanDate;
     private Date returnDate;
-    private String status;
+    private Boolean status;
+
+    @ManyToOne
+    @JoinColumn(name = "book_id")
+    private Book book;
+
+    @ManyToOne
+    @JoinColumn(name = "person_id")
+    private Person person;
+
 }

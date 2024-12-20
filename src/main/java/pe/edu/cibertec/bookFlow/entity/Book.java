@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.List;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -16,10 +18,12 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer bookId;
     private String title;
-    private String publisheYear;
-    private String  genre;
-    private Double price;
+    private String publishedYear;
     private Boolean isAvailable;
+
+    @OneToMany(mappedBy = "book",cascade = {CascadeType.PERSIST,CascadeType.REMOVE},orphanRemoval = true)
+    @ToString.Exclude
+    private List<Loan> loans ;
 
     @ManyToOne
     @ToString.Exclude
@@ -32,4 +36,5 @@ public class Book {
     @ManyToOne
     @ToString.Exclude
     private TypeBookGenre typeBookGenre;
+
 }
