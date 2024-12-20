@@ -26,14 +26,17 @@ public class Book {
     private List<Loan> loans ;
 
     @ManyToOne
+    @JoinColumn(name = "author_id")
     @ToString.Exclude
     private Author author;
 
     @ManyToOne
+    @JoinColumn(name = "editorial_id")
     @ToString.Exclude
     private Editorial editorial;
 
     @ManyToOne
+    @JoinColumn(name = "type_book_genre_id")
     @ToString.Exclude
     private TypeBookGenre typeBookGenre;
 

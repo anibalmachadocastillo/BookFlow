@@ -7,8 +7,8 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
-<div>
-  <h1 class="text-center mb-4">Lista de Libros</h1>
+<div class="container">
+  <h1 class=" mb-4">Lista de Libros</h1>
   <table class="table table-striped table-hover table-bordered">
     <thead class="table-dark">
     <tr>
@@ -18,20 +18,18 @@
       <th>Genero</th>
       <th>Editorial</th>
       <th>Año</th>
-      <th>Precio</th>
       <th>Disponibilidad</th>
       <th>Acciones</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="book : ${books}">
-      <td th:text="${book.book_id}"></td>
-      <td th:text="${book.title}"></td>
-      <td th:text="${book.author.name}"></td>
-      <td th:text="${book.genre.name}"></td>
-      <td th:text="${book.editorial.name}"></td>
-      <td th:text="${book.published_year}"></td>
-      <td th:text="${book.price}"></td>
+    <tr th:each="bookDto : ${bookDtos}">
+      <td th:text="${bookDto.bookId}"></td>
+      <td th:text="${bookDto.title()}"></td>
+      <td th:text="${bookDto.author()}"></td>
+      <td th:text="${bookDto.editorial()}"></td>
+      <td th:text="${bookDto.publishedYear()}"></td>
+      <td th:text="${bookDto.isAvailable()}"></td>
       <td>
         <span th:text="${book.isAvailable ? 'Disponible' : 'No Disponible'}"></span>
       </td>
