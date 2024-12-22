@@ -91,10 +91,10 @@ public class PersonServiceImpl implements PersonService {
     public PersonEditDto findById(Integer id) {
         Optional<Person> optional= personRepository.findById(id);
         return optional.map(
-                person -> new BookEditDto(person.getPersonId(),
+                person -> new PersonEditDto(person.getPersonId(),
                         person.getFirstName(),
                         person.getLastName(),
-                        person.getTypeDocument(),
+                        person.getTypeDocument().getTypeDocumentId(),
                         person.getDocumentNumber(),
                         person.getAddress(),
                         person.getPhone(),
@@ -110,7 +110,7 @@ public class PersonServiceImpl implements PersonService {
         Optional<Person> optional = personRepository.findById(personEditDto.personId());
         return optional.map(
                 person -> {
-                    person.setFirstName(personEditDto.fisrtName());
+                    person.setFirstName(personEditDto.firstName());
                     person.setLastName(personEditDto.lastName());
                     person.setTypeDocument(typeDocument);
                     person.setDocumentNumber(personEditDto.documentNumber());

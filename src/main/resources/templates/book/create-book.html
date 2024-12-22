@@ -18,7 +18,7 @@
 
         <div class="form-floating mb-3">
             <select id="authorId" name="authorId" class="form-control" required>
-            <option value="">Selecciona una lenguaje</option>
+            <option value="">Selecciona una autor</option>
             <option th:each="author : ${authors}"
                     th:value="${author.authorId}"
                     th:text="${author.name}">
