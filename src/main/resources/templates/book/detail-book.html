@@ -9,42 +9,43 @@
 <body>
 <div class="container mt-4">
     <h1 class="text-center mb-4">Detalle del Libro</h1>
-    <table class="table table-bordered">
-        <tbody>
-        <tr>
-            <th>ID</th>
-            <td th:text="${book.book_id}"></td>
-        </tr>
-        <tr>
-            <th>Título</th>
-            <td th:text="${book.title}"></td>
-        </tr>
-        <tr>
-            <th>Autor</th>
-            <td th:text="${book.author.name}"></td>
-        </tr>
-        <tr>
-            <th>Género</th>
-            <td th:text="${book.genre.name}"></td>
-        </tr>
-        <tr>
-            <th>Editorial</th>
-            <td th:text="${book.editorial.name}"></td>
-        </tr>
-        <tr>
-            <th>Año de Publicación</th>
-            <td th:text="${book.published_year}"></td>
-        </tr>
-        <tr>
-            <th>Precio</th>
-            <td th:text="${book.price}"></td>
-        </tr>
-        </tbody>
-    </table>
-    <div class="text-center">
-        <a th:href="@{'/books/edit/' + ${book.book_id}}" class="btn btn-warning">Editar</a>
-        <a th:href="@{'/books'}" class="btn btn-primary">Volver a la Lista</a>
-    </div>
+    <form th:object="${book}" >
+
+        <div class="mb-3">
+            <label for="title" class="form-label">Título</label>
+            <input type="text" class="form-control" id="title" name="title" th:value="${book.title}" readonly>
+        </div>
+
+        <div class="mb-3">
+            <label for="author" class="form-label">Autor</label>
+            <input type="text" class="form-control" id="author" name="author" th:value="${book.author}" readonly>
+        </div>
+
+        <div class="mb-3">
+            <label for="genre" class="form-label">Género</label>
+            <input type="text" class="form-control" id="genre" name="genre" th:value="${book.typeBookGenre}" readonly>
+        </div>
+
+        <div class="mb-3">
+            <label for="editorial" class="form-label">Editorial</label>
+            <input type="text" class="form-control" id="editorial" name="editorial" th:value="${book.editorial}" readonly>
+        </div>
+
+        <div class="mb-3">
+            <label for="published_year" class="form-label">Año de Publicación</label>
+            <input type="number" class="form-control" id="published_year" name="published_year" th:value="${book.publishedYear}" readonly>
+        </div>
+
+        <div class="mb-3">
+            <label for="isAvailable" class="form-label">Disponible</label>
+            <input type="text" class="form-control" id="isAvailable" name="isAvailable"
+                   th:value="${book.isAvailable ? 'Sí' : 'No'}" readonly>
+        </div>
+
+        <div class="text-center">
+            <a href="/book/list" class="btn btn-primary">Regresar</a>
+        </div>
+    </form>
 </div>
 </body>
 </html>

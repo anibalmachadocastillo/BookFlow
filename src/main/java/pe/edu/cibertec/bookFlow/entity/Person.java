@@ -37,11 +37,11 @@ public class Person {
     @ToString.Exclude
     private PersonGenre personGenre;
 
-    @OneToOne(mappedBy = "person",cascade = {CascadeType.PERSIST,CascadeType.REMOVE},orphanRemoval = true)
+    @OneToOne(mappedBy = "person",cascade = {CascadeType.PERSIST},orphanRemoval = true)
     @ToString.Exclude
     private User user;
 
-    @OneToMany(mappedBy = "person",cascade = {CascadeType.PERSIST,CascadeType.REMOVE},orphanRemoval = true)
+    @OneToMany(mappedBy = "person",cascade = {CascadeType.PERSIST},orphanRemoval = true)
     @ToString.Exclude
     private List<Loan> loans;
 

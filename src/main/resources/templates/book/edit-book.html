@@ -9,40 +9,74 @@
 <body>
 <div class="container mt-4">
     <h1 class="text-center mb-4">Editar Libro</h1>
-    <form th:action="@{'/books/update/' + ${book.book_id}}" method="post">
-        <div class="mb-3">
+    <form th:object="${book}" th:action="@{/book/edit}" method="post">
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="bookId" name="bookId"  th:value="${book.bookId()}" hidden>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="title" name="title"  th:value="${book.title()}" required>
             <label for="title" class="form-label">Título</label>
-            <input type="text" class="form-control" id="title" name="title" th:value="${book.title}" required>
         </div>
-        <div class="mb-3">
-            <label for="author" class="form-label">Autor</label>
-            <input type="text" class="form-control" id="author" name="author" th:value="${book.author.name}" required>
+
+        <div class="form-floating mb-3">
+            <select id="authorId" name="authorId" class="form-control" th:field="*{authorId}" required>
+                <option value="">Selecciona un autor</option>
+                <option th:each="author : ${authors}"
+                        th:value="${author.authorId}"
+                        th:text="${author.name}"
+                        th:selected="${author.authorId == book.authorId()}">
+                </option>
+            </select>
+            <label for="authorId" class="form-label">Autor</label>
         </div>
-        <div class="mb-3">
-            <label for="genre" class="form-label">Género</label>
-            <input type="text" class="form-control" id="genre" name="genre" th:value="${book.genre.name}" required>
+
+        <div class="form-floating mb-3">
+            <select id="typeBookGenreId" name="typeBookGenreId" class="form-control" th:field="*{typeBookGenreId}" required>
+                <option value="">Selecciona un autor</option>
+                <option th:each="typeBookGenre : ${typeBookGenres}"
+                        th:value="${typeBookGenre.typeBookGenreId}"
+                        th:text="${typeBookGenre.name}"
+                        th:selected="${typeBookGenre.typeBookGenreId() == book.typeBookGenreId()}">
+                </option>
+            </select>
+            <label for="authorId" class="form-label">Género</label>
         </div>
-        <div class="mb-3">
-            <label for="editorial" class="form-label">Editorial</label>
-            <input type="text" class="form-control" id="editorial" name="editorial" th:value="${book.editorial.name}" required>
+
+
+        <div class="form-floating mb-3">
+            <select id="editorialId" name="editorialId" class="form-control" th:field="*{editorialId}" required>
+                <option value="">Selecciona un autor</option>
+                <option th:each="editorial : ${editorials}"
+                        th:value="${editorial.editorialId()}"
+                        th:text="${editorial.name}"
+                        th:selected="${editorial.editorialId() == book.editorialId()}">
+                </option>
+            </select>
+            <label for="authorId" class="form-label">Género</label>
         </div>
+
         <div class="mb-3">
-            <label for="published_year" class="form-label">Año de Publicación</label>
-            <input type="number" class="form-control" id="published_year" name="published_year" th:value="${book.published_year}" required>
+            <label for="publishedYear" class="form-label">Año de Publicación</label>
+            <input type="number" class="form-control" id="publishedYear" name="publishedYear" th:value="${book.publishedYear}" required>
         </div>
-        <div class="mb-3">
-            <label for="price" class="form-label">Precio</label>
-            <input type="number" class="form-control" id="price" name="price" th:value="${book.price}" step="0.01" required>
-        </div>
-        <div class="mb-3">
+
+        <div class="form-floating mb-3">
+            <select class="form-select" id="isAvailable" name="isAvailable" th:field="*{isAvailable}" required>
+                <option disabled value="">Seleccione...</option>
+                <option th:value="true" th:selected="*{isAvailable == true}">Sí</option>
+                <option th:value="false" th:selected="*{isAvailable == false}">No</option>
+            </select>
             <label for="isAvailable" class="form-label">Disponible</label>
-            <input type="checkbox" class="form-check-input" id="isAvailable" name="isAvailable" th:checked="${book.isAvailable}">
         </div>
+
+
         <div class="text-center">
             <button type="submit" class="btn btn-success">Actualizar</button>
-            <a href="/books" class="btn btn-primary">Cancelar</a>
+            <a href="/book/list" class="btn btn-primary">Cancelar</a>
         </div>
     </form>
 </div>
+
 </body>
 </html>

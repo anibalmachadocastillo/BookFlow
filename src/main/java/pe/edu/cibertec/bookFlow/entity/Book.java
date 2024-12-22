@@ -21,7 +21,7 @@ public class Book {
     private String publishedYear;
     private Boolean isAvailable;
 
-    @OneToMany(mappedBy = "book",cascade = {CascadeType.PERSIST,CascadeType.REMOVE},orphanRemoval = true)
+    @OneToMany(mappedBy = "book")
     @ToString.Exclude
     private List<Loan> loans ;
 

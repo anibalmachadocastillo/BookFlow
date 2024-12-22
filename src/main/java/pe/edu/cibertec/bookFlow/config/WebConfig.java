@@ -11,7 +11,7 @@ public class WebConfig {
     public FilterRegistrationBean<HiddenHttpMethodFilter> hiddenHttpMethodFilter() {
         FilterRegistrationBean<HiddenHttpMethodFilter> registrationBean = new FilterRegistrationBean<>();
         registrationBean.setFilter(new HiddenHttpMethodFilter());
-        registrationBean.addUrlPatterns("/maintenance/*");
+        registrationBean.addUrlPatterns("/*");
         return registrationBean;
     }
 }
