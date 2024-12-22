@@ -1,8 +1,7 @@
-package pe.edu.cibertec.bookFlow.dto;
+package pe.edu.cibertec.bookFlow.dto.person;
 
 import pe.edu.cibertec.bookFlow.entity.PersonGenre;
 import pe.edu.cibertec.bookFlow.entity.TypeDocument;
-import pe.edu.cibertec.bookFlow.entity.User;
 
 import java.util.Date;
 

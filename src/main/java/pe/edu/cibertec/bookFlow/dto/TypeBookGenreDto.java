@@ -1,8 +1,7 @@
 package pe.edu.cibertec.bookFlow.dto;
 
-public record TypeBookGenre(
+public record TypeBookGenreDto(
         Integer typeBookGenreId,
         String name
-
 ) {
 }

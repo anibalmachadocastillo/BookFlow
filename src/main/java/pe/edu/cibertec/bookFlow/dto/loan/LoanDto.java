@@ -1,4 +1,4 @@
-package pe.edu.cibertec.bookFlow.dto;
+package pe.edu.cibertec.bookFlow.dto.loan;
 
 import java.util.Date;
 
