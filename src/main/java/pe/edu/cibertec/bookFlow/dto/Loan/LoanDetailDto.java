@@ -1,4 +1,11 @@
-package pe.edu.cibertec.bookFlow.dto;
+package pe.edu.cibertec.bookFlow.dto.Loan;
 
-public record LoanDetailDto() {
+import java.util.Date;
+
+public record LoanDetailDto(Integer loanId,
+                            String book,
+                            String person,
+                            Date loanDate,
+                            Date returnDate,
+                            Boolean status) {
 }

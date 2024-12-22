@@ -7,4 +7,4 @@ public record BookDto(Integer bookId,
                       String typeBookGenre,
                       String publishedYear,
                       Boolean isAvailable) {
-}
+    }

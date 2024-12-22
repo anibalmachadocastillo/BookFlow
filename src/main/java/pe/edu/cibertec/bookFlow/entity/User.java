@@ -17,12 +17,12 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
+    private String name;
+    private String email;
     private String userName;
     private String password;
     private Date creationDate;
 
-    @OneToOne
-    @JoinColumn(name="person_id")
-    @ToString.Exclude
-    private Person person;
+
+
 }

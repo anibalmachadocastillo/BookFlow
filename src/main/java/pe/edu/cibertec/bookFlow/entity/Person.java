@@ -21,10 +21,8 @@ public class Person {
     private String firstName;
     private String lastName;
     private String documentNumber;
-    private String district;
     private String address;
     private String phone;
-    private Date birthDate;
     private String email;
 
     @ManyToOne
@@ -32,16 +30,7 @@ public class Person {
     @ToString.Exclude
     private TypeDocument typeDocument;
 
-    @ManyToOne
-    @JoinColumn(name = "person_genre_id")
-    @ToString.Exclude
-    private PersonGenre personGenre;
-
-    @OneToOne(mappedBy = "person",cascade = {CascadeType.PERSIST},orphanRemoval = true)
-    @ToString.Exclude
-    private User user;
-
-    @OneToMany(mappedBy = "person",cascade = {CascadeType.PERSIST},orphanRemoval = true)
+    @OneToMany(mappedBy = "person")
     @ToString.Exclude
     private List<Loan> loans;
 

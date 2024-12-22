@@ -1,6 +1,6 @@
 package pe.edu.cibertec.bookFlow.dto;
 
-public record TypeDocument(
+public record TypeDocumentDto(
         Integer typeDocumentId,
         String name
 ) {

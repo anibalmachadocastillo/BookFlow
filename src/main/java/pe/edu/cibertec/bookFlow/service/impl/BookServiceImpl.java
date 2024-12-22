@@ -113,12 +113,6 @@ public class BookServiceImpl implements BookService {
         book.setPublishedYear(bookCreateDto.publishedYear());
         book.setIsAvailable(bookCreateDto.isAvailable());
         bookRepository.save(book);
-
-        System.out.println(author);
-        System.out.println(editorial);
-        System.out.println(typeBookGenre);
-        System.out.println(bookCreateDto);
-
     }
 
     @Override
@@ -152,9 +146,9 @@ public class BookServiceImpl implements BookService {
         Author author = authorRepository.findById(bookEditDto.authorId()).
                 orElseThrow(() -> new IllegalArgumentException("Author not found"));
         Editorial editorial = editorialRepository.findById(bookEditDto.editorialId()).
-                orElseThrow(() -> new IllegalArgumentException("Author not found"));
+                orElseThrow(() -> new IllegalArgumentException("Editorial not found"));
         TypeBookGenre typeBookGenre = typeBookGenreRepository.findById(bookEditDto.typeBookGenreId()).
-                orElseThrow(() -> new IllegalArgumentException("Author not found"));
+                orElseThrow(() -> new IllegalArgumentException("TypeBookGenre not found"));
 
         Optional<Book> optional = bookRepository.findById(bookEditDto.bookId());
         return optional.map(
